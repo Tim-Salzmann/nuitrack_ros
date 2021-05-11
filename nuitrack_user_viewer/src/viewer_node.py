@@ -20,7 +20,7 @@ class UserViewer:
         with self.lock:
             self.user_data = UserDataArray()
 
-        self.img_sub = rospy.Subscriber('/nuitrack/rgb/image_raw', Image, self.handle_raw_image)
+        #self.img_sub = rospy.Subscriber('/nuitrack/rgb/image_raw', Image, self.handle_raw_image)
         self.user_sub = rospy.Subscriber('/nuitrack/detected_users', UserDataArray, self.handle_user_data)
         self.skeleton_sub = rospy.Subscriber('/nuitrack/skeletons', SkeletonDataArray, self.handle_skeleton_data)
         self.viz_user_pub = rospy.Publisher('/nuitrack/viz_user_markers', MarkerArray, queue_size=10)
