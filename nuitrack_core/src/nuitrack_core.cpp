@@ -94,7 +94,7 @@ private:
         Nuitrack::setConfigValue("Skeletonization.ActiveUsers", "1");
 
         // Realsense Depth Module - force to 848x480 @ 60 FPS
-        Nuitrack::setConfigValue("Realsense2Module.Depth.Preset", "5");
+        Nuitrack::setConfigValue("Realsense2Module.Depth.Preset", "3");
         Nuitrack::setConfigValue("Realsense2Module.Depth.RawWidth", "848");
         Nuitrack::setConfigValue("Realsense2Module.Depth.RawHeight", "480");
         Nuitrack::setConfigValue("Realsense2Module.Depth.ProcessWidth", "848");
