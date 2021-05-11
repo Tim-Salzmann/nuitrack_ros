@@ -106,9 +106,9 @@ class UserViewer:
                 marker.type = marker.SPHERE
                 marker.action = marker.ADD
 
-                marker.pose.position.x = skeleton.joint_pos[i].z / 1000.0
-                marker.pose.position.y = -1 * skeleton.joint_pos[i].x / 1000.0
-                marker.pose.position.z = skeleton.joint_pos[i].y / 1000.0
+                marker.pose.position.x = skeleton.joint_pose[i].position.z / 1000.0
+                marker.pose.position.y = -1 * skeleton.joint_pose[i].position.x / 1000.0
+                marker.pose.position.z = skeleton.joint_pose[i].position.y / 1000.0
 
                 marker.pose.orientation.w = 1.0
 

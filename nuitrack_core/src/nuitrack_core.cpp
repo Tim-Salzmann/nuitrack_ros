@@ -138,10 +138,8 @@ private:
         }
         catch (LicenseNotAcquiredException& e)
         {
-            std::cerr << "Test" << std::endl;
             reset();
-            //NuitrackCore m(nh_);
-            std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
+            std::cerr << "Resetting because LicenseNotAcquired" << std::endl;
             //assert(false);
         }
         catch (const Exception& e)
@@ -303,12 +301,12 @@ private:
 
                 data.confidences.push_back(skeletons[i].joints[j.first].confidence);
 
-                geometry_msgs::Point p;
-                p.x = skeletons[i].joints[j.first].real.x;
-                p.y = skeletons[i].joints[j.first].real.y;
-                p.z = skeletons[i].joints[j.first].real.z;
+                geometry_msgs::Pose pose;
+                pose.position.x = skeletons[i].joints[j.first].real.x;
+                pose.position.y = skeletons[i].joints[j.first].real.y;
+                pose.position.z = skeletons[i].joints[j.first].real.z;
 
-                data.joint_pos.push_back(p);
+                data.joint_pose.push_back(p);
             }
 
             msg.skeletons.push_back(data);
