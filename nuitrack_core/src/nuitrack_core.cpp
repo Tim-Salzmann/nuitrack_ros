@@ -9,7 +9,7 @@
 #include <nuitrack_msgs/SkeletonData.h>
 #include <nuitrack_msgs/SkeletonDataArray.h>
 
-#include <rot_mat_to_quat.h>
+#include "rot_mat_to_quat.h"
 
 using namespace tdv::nuitrack;
 
