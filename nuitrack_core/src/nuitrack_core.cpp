@@ -93,7 +93,7 @@ private:
         catch (LicenseNotAcquiredException& e)
         {
             std::cerr << "Test" << std::endl;
-            //this->~NuitrackCore();
+            this->~NuitrackCore();
             *this = NuitrackCore(nh_);
             std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
             //assert(false);
@@ -265,8 +265,7 @@ private:
 
             msg.skeletons.push_back(data);
         }
-        std::cerr << "Published Skeleton" << std::endl;
-        std::cerr << skeletonData->getNumSkeletons() << std::endl;
+
         pub_skeleton_data_.publish(msg);
     }
 
