@@ -328,7 +328,7 @@ private:
         msg.header.frame_id = 'nuitrack_link';
 
         auto skeletons = skeletonData->getSkeletons();
-        std::array<float, 3> quat;
+        std::array<float, 4> quat;
         for(size_t i = 0; i < skeletonData->getNumSkeletons(); i++)
         {
             nuitrack_msgs::SkeletonData data;
