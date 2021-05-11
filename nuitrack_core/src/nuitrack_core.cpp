@@ -123,7 +123,7 @@ private:
 
         Nuitrack::setConfigValue("DepthProvider.Depth2ColorRegistration", "true");
 
-        Nuitrack::setConfigValue("Realsense2Module.Depth.PostProcessing.DownsampleFactor", "2");
+        // Nuitrack::setConfigValue("Realsense2Module.Depth.PostProcessing.DownsampleFactor", "2");
     }
 
     void reset()
