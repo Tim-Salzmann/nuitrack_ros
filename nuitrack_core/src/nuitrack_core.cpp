@@ -37,6 +37,8 @@ public:
         }
         catch (const Exception& e) {} // Do nothing
 
+        setNuitrackConfig();
+
         colorSensor_ = ColorSensor::create();
         colorSensor_->connectOnNewFrame(std::bind(&NuitrackCore::onNewRGBFrame, this, std::placeholders::_1));
 
@@ -83,6 +85,34 @@ public:
     }
 
 private:
+    void setNuitrackConfig()
+    {
+        // always set mirror
+        Nuitrack::setConfigValue("DepthProvider.Mirror", "true");
+
+        // Only track primary user
+        Nuitrack::setConfigValue("Skeletonization.ActiveUsers", "1");
+
+        // Realsense Depth Module - force to 848x480 @ 60 FPS
+        Nuitrack::setConfigValue("Realsense2Module.Depth.Preset", "5");
+        Nuitrack::setConfigValue("Realsense2Module.Depth.RawWidth", "848");
+        Nuitrack::setConfigValue("Realsense2Module.Depth.RawHeight", "480");
+        Nuitrack::setConfigValue("Realsense2Module.Depth.ProcessWidth", "848");
+        Nuitrack::setConfigValue("Realsense2Module.Depth.ProcessHeight", "480");
+        Nuitrack::setConfigValue("Realsense2Module.Depth.FPS", "60"");
+
+        // Realsense RGB Module - force to 848x480 @ 60 FPS
+        Nuitrack::setConfigValue("Realsense2Module.RGB.RawWidth", "848");
+        Nuitrack::setConfigValue("Realsense2Module.RGB.RawHeight", "480");
+        Nuitrack::setConfigValue("Realsense2Module.RGB.ProcessWidth", "848");
+        Nuitrack::setConfigValue("Realsense2Module.RGB.ProcessHeight", "480");
+        Nuitrack::setConfigValue("Realsense2Module.RGB.FPS", "60");
+
+        Nuitrack::setConfigValue("DepthProvider.Depth2ColorRegistration", "true");
+
+        Nuitrack::setConfigValue("Realsense2Module.Depth.PostProcessing.DownsampleFactor", "2");
+    }
+
     void reset()
     {
         timer_.stop();
@@ -93,7 +123,7 @@ private:
             Nuitrack::init();
         }
         catch (const Exception& e) {} // Do nothing
-
+        setNuitrackConfig();
         colorSensor_ = ColorSensor::create();
         colorSensor_->connectOnNewFrame(std::bind(&NuitrackCore::onNewRGBFrame, this, std::placeholders::_1));
 
