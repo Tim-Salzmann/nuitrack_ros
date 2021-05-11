@@ -9,7 +9,7 @@ inline float NORM(float a, float b, float c, float d) {
 }
 
 // quaternion = [w, x, y, z]'
-std::array<float, 3> mRot2Quat(std::array<float, 3> m) {
+std::array<float, 3> mRot2Quat(std::array<float, 3>& m) {
 	float r11 = m[0];
 	float r12 = m[1];
 	float r13 = m[2];

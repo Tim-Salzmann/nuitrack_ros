@@ -1,4 +1,4 @@
 #ifndef ROT2QUAT
 #define ROT2QUAT
-Mat mRot2Quat(const Mat& m);
+std::array<float, 3> mRot2Quat(std::array<float, 3>& m);
 #endif
