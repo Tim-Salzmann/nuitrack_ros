@@ -306,7 +306,7 @@ private:
                 pose.position.y = skeletons[i].joints[j.first].real.y;
                 pose.position.z = skeletons[i].joints[j.first].real.z;
 
-                data.joint_pose.push_back(p);
+                data.joint_pose.push_back(pose);
             }
 
             msg.skeletons.push_back(data);
