@@ -92,6 +92,9 @@ private:
         // always set mirror
         //Nuitrack::setConfigValue("DepthProvider.Mirror", "true");
 
+        // Nuitrack AI
+        Nuitrack::setConfigValue("Skeletonization.Typ", "CNN_HPE");
+
         // Only track primary user
         Nuitrack::setConfigValue("Skeletonization.ActiveUsers", "1");
 
