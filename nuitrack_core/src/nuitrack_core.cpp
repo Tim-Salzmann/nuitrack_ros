@@ -22,7 +22,7 @@ class NuitrackCore
 public:
     NuitrackCore(ros::NodeHandle nh)
     {
-
+        nh_ = nh;
 
         pub_rgb_data_ = nh.advertise<sensor_msgs::Image>("/nuitrack/rgb/image_raw", 1);
         pub_pcl_data_ = nh.advertise<sensor_msgs::PointCloud2>("/nuitrack/depth/points", 1);
@@ -92,8 +92,9 @@ private:
         }
         catch (LicenseNotAcquiredException& e)
         {
-            std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
-            assert(false);
+            *this = NuitrackCore m(nh_);
+            //std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
+            //assert(false);
         }
         catch (const Exception& e)
         {
