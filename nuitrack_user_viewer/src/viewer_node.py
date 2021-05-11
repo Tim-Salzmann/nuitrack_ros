@@ -150,9 +150,9 @@ class UserViewer:
 
                 for j in draw_joint_lines[i]:
                     p = Point()
-                    p.x = skeleton.joint_pos[j].z / 1000.0
-                    p.y = -1 * skeleton.joint_pos[j].x / 1000.0
-                    p.z = skeleton.joint_pos[j].y / 1000.0
+                    p.x = skeleton.joint_pose[j].position.z / 1000.0
+                    p.y = -1 * skeleton.joint_pose[j].position.x / 1000.0
+                    p.z = skeleton.joint_pose[j].position.y / 1000.0
 
                     line.points.append(p)
                 markers.markers.append(line)
