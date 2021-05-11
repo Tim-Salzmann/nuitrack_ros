@@ -1,4 +1,3 @@
-#include <array>
 #include <math.h>
 
 inline float SIGN(float x) {
@@ -10,7 +9,7 @@ inline float NORM(float a, float b, float c, float d) {
 }
 
 // quaternion = [w, x, y, z]'
-std::array<float, 3> mRot2Quat(float *m) {
+float* mRot2Quat(float *m) {
 	float r11 = m[0];
 	float r12 = m[1];
 	float r13 = m[2];
