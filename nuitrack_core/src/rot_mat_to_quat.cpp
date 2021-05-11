@@ -1,3 +1,4 @@
+#include <array>
 #include <math.h>
 
 inline float SIGN(float x) {
