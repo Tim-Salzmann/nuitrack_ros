@@ -92,8 +92,7 @@ private:
         }
         catch (LicenseNotAcquiredException& e)
         {
-            *this.~NuitrackCore();
-            *this = NuitrackCore(nh_);
+            *this = NuitrackCore m(nh_);
             //std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
             //assert(false);
         }
@@ -276,8 +275,6 @@ private:
     ros::Publisher pub_skeleton_data_;
     ros::Publisher pub_event_person_appeared_;
     ros::Publisher pub_event_person_disappeared_;
-
-    ros::NodeHandle nh_;
 
     int width_;
     int height_;
