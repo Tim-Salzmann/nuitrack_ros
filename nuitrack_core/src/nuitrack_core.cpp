@@ -264,7 +264,7 @@ private:
 
             msg.skeletons.push_back(data);
         }
-
+        std::cerr << "Published Skeleton" << std::endl;
         pub_skeleton_data_.publish(msg);
     }
 
