@@ -130,6 +130,8 @@ link_directories(
 
 add_executable(nuitrack_core_node
   src/nuitrack_core.cpp
+  src/rot_mat_to_quat.cpp
+  src/rot_mat_to_quat.h
 )
 
 target_link_libraries(nuitrack_core_node
