@@ -74,8 +74,10 @@ public:
     {
         try
         {
+            std::cerr << "Offload" << std::endl;
             timer_.stop();
             Nuitrack::release();
+            std::cerr << "Offloaded" << std::endl;
         }
         catch (const Exception& e) {} // Do nothing
     }
