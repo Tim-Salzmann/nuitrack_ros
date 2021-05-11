@@ -83,6 +83,50 @@ public:
     }
 
 private:
+    void reset()
+    {
+        timer_.stop();
+        Nuitrack::release();
+
+        try
+        {
+            Nuitrack::init();
+        }
+        catch (const Exception& e) {} // Do nothing
+
+        colorSensor_ = ColorSensor::create();
+        colorSensor_->connectOnNewFrame(std::bind(&NuitrackCore::onNewRGBFrame, this, std::placeholders::_1));
+
+        depthSensor_ = DepthSensor::create();
+        depthSensor_->connectOnNewFrame(std::bind(&NuitrackCore::onNewDepthFrame, this, std::placeholders::_1));
+
+        OutputMode colorOutputMode = colorSensor_->getOutputMode();
+
+        width_ = colorOutputMode.xres;
+        height_ = colorOutputMode.yres;
+
+        userTracker_ = UserTracker::create();
+        userTracker_->connectOnNewUser(std::bind(&NuitrackCore::onNewUser, this, std::placeholders::_1));
+        userTracker_->connectOnLostUser(std::bind(&NuitrackCore::onLostUser, this, std::placeholders::_1));
+        userTracker_->connectOnUpdate(std::bind(&NuitrackCore::onUserUpdate, this, std::placeholders::_1));
+
+        skeletonTracker_ = SkeletonTracker::create();
+        skeletonTracker_->connectOnUpdate(std::bind(&NuitrackCore::onSkeletonUpdate, this, std::placeholders::_1));
+
+        try
+        {
+            Nuitrack::run();
+        }
+        catch (const Exception& e)
+        {
+            std::cerr << "Can not start Nuitrack (ExceptionType: " << e.type() << ")" << std::endl;
+            assert(false);
+        }
+
+        timer_ = nh.createTimer(ros::Duration(1/30), &NuitrackCore::timerCallback, this);
+        ROS_INFO("Reset nuitrack_core...");
+    }
+
     void timerCallback(const ros::TimerEvent& event)
     {
         try
@@ -95,7 +139,8 @@ private:
         catch (LicenseNotAcquiredException& e)
         {
             std::cerr << "Test" << std::endl;
-            NuitrackCore m(nh_);
+            reset();
+            //NuitrackCore m(nh_);
             std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
             //assert(false);
         }
