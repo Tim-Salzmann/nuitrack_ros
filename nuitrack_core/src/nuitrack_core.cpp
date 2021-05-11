@@ -346,7 +346,7 @@ private:
                 pose.position.y = skeletons[i].joints[j.first].real.y;
                 pose.position.z = skeletons[i].joints[j.first].real.z;
 
-                quat = mRot2Quat(skeletons[i].joints[j.first].orient.matrix)
+                quat = mRot2Quat(skeletons[i].joints[j.first].orient.matrix);
 
                 pose.orientation.w = quat[0];
                 pose.orientation.x = quat[1];
