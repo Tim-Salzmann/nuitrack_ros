@@ -9,6 +9,8 @@
 #include <nuitrack_msgs/SkeletonData.h>
 #include <nuitrack_msgs/SkeletonDataArray.h>
 
+#include <rot_mat_to_quat.h>
+
 using namespace tdv::nuitrack;
 
 std::map<int, std::string> JOINT_NAMES = {{JOINT_HEAD, "joint_head"}, {JOINT_NECK, "joint_neck"}, {JOINT_TORSO, "joint_torso"}, {JOINT_WAIST, "joint_waist"},
@@ -95,6 +97,13 @@ private:
 
         // Realsense Depth Module - force to 848x480 @ 60 FPS
         Nuitrack::setConfigValue("Realsense2Module.Depth.Preset", "3");
+//        RS2_RS400_VISUAL_PRESET_CUSTOM,
+//        RS2_RS400_VISUAL_PRESET_DEFAULT,
+//        RS2_RS400_VISUAL_PRESET_HAND,
+//        RS2_RS400_VISUAL_PRESET_HIGH_ACCURACY,
+//        RS2_RS400_VISUAL_PRESET_HIGH_DENSITY,
+//        RS2_RS400_VISUAL_PRESET_MEDIUM_DENSITY,
+//        RS2_RS400_VISUAL_PRESET_COUNT
         Nuitrack::setConfigValue("Realsense2Module.Depth.RawWidth", "848");
         Nuitrack::setConfigValue("Realsense2Module.Depth.RawHeight", "480");
         Nuitrack::setConfigValue("Realsense2Module.Depth.ProcessWidth", "848");
@@ -335,6 +344,13 @@ private:
                 pose.position.x = skeletons[i].joints[j.first].real.x;
                 pose.position.y = skeletons[i].joints[j.first].real.y;
                 pose.position.z = skeletons[i].joints[j.first].real.z;
+
+                quat = mRot2Quat(skeletons[i].joints[j.first].orientation.matrix)
+
+                pose.orientation.w = quat.at<float>(0);
+                pose.orientation.x = quat.at<float>(1);
+                pose.orientation.y = quat.at<float>(2);
+                pose.orientation.z = quat.at<float>(3);
 
                 data.joint_pose.push_back(pose);
             }
