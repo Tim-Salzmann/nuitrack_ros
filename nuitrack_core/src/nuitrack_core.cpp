@@ -257,6 +257,8 @@ private:
             {
                 data.joints.push_back(j.second);
 
+                data.confidences.push_back(skeletons[i].joints[j.first].confidence);
+
                 geometry_msgs::Point p;
                 p.x = skeletons[i].joints[j.first].real.x;
                 p.y = skeletons[i].joints[j.first].real.y;

@@ -120,7 +120,7 @@ class UserViewer:
                 hsv = np.uint8([[[skeleton.id * 10, 255, 255]]])
                 color = cv2.cvtColor(hsv, cv2.COLOR_HSV2RGB)[0][0]
 
-                marker.color.a = 0.5
+                marker.color.a = skeleton.confidences[i]
                 marker.color.r = color[0] / 255.0
                 marker.color.g = color[1] / 255.0
                 marker.color.b = color[2] / 255.0
