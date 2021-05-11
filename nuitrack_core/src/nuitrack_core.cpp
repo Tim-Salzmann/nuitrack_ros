@@ -99,7 +99,7 @@ private:
         Nuitrack::setConfigValue("Realsense2Module.Depth.RawHeight", "480");
         Nuitrack::setConfigValue("Realsense2Module.Depth.ProcessWidth", "848");
         Nuitrack::setConfigValue("Realsense2Module.Depth.ProcessHeight", "480");
-        Nuitrack::setConfigValue("Realsense2Module.Depth.FPS", "60"");
+        Nuitrack::setConfigValue("Realsense2Module.Depth.FPS", "60");
 
         // Realsense RGB Module - force to 848x480 @ 60 FPS
         Nuitrack::setConfigValue("Realsense2Module.RGB.RawWidth", "848");
