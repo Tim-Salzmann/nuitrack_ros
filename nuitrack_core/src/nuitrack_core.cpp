@@ -328,6 +328,7 @@ private:
         msg.header.frame_id = 'nuitrack_link';
 
         auto skeletons = skeletonData->getSkeletons();
+        Mat quat;
         for(size_t i = 0; i < skeletonData->getNumSkeletons(); i++)
         {
             nuitrack_msgs::SkeletonData data;
@@ -345,7 +346,7 @@ private:
                 pose.position.y = skeletons[i].joints[j.first].real.y;
                 pose.position.z = skeletons[i].joints[j.first].real.z;
 
-                quat = mRot2Quat(skeletons[i].joints[j.first].orientation.matrix)
+                quat = mRot2Quat(skeletons[i].joints[j.first].orient.matrix)
 
                 pose.orientation.w = quat.at<float>(0);
                 pose.orientation.x = quat.at<float>(1);
