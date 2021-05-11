@@ -6,7 +6,7 @@
     <arg name="offset_pitch" default="0.0" />
     <arg name="offset_yaw" default="0.0" />
 
-    <node name="$nuitrack_core" type="nuitrack_core_node" pkg="nuitrack_core" />
+    <node name="nuitrack_core" type="nuitrack_core_node" pkg="nuitrack_core" />
     <!--
     <node name="$(arg prefix)_user_viewer" type="viewer_node.py" pkg="nuitrack_user_viewer" output="screen" />
     <include file="$(find rgbd_launch)/launch/kinect_frames.launch" if="$(arg use_openni2)">
