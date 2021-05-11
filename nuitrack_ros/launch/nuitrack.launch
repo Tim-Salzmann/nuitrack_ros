@@ -15,6 +15,6 @@
     -->
 
     <node name="static_nuitrack_tf_publisher" type="static_transform_publisher" pkg="tf2_ros"
-        args="$(arg offset_x) $(arg offset_y) $(arg offset_z) $(arg offset_roll) $(arg offset_pitch) $(arg offset_yaw) odom $nuitrack_link"
+        args="$(arg offset_x) $(arg offset_y) $(arg offset_z) $(arg offset_roll) $(arg offset_pitch) $(arg offset_yaw) odom nuitrack_link"
         output="screen" />
 </launch>
