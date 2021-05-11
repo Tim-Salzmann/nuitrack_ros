@@ -123,7 +123,7 @@ private:
             assert(false);
         }
 
-        timer_ = nh.createTimer(ros::Duration(1/30), &NuitrackCore::timerCallback, this);
+        timer_ = nh_.createTimer(ros::Duration(1/30), &NuitrackCore::timerCallback, this);
         ROS_INFO("Reset nuitrack_core...");
     }
 
