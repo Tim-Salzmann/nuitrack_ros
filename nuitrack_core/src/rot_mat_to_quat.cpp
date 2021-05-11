@@ -1,3 +1,5 @@
+#include <math.h>
+
 inline float SIGN(float x) {
 	return (x >= 0.0f) ? +1.0f : -1.0f;
 }
@@ -7,16 +9,16 @@ inline float NORM(float a, float b, float c, float d) {
 }
 
 // quaternion = [w, x, y, z]'
-Mat mRot2Quat(const Mat& m) {
-	float r11 = m.at<float>(0);
-	float r12 = m.at<float>(1);
-	float r13 = m.at<float>(2);
-	float r21 = m.at<float>(3);
-	float r22 = m.at<float>(4);
-	float r23 = m.at<float>(5);
-	float r31 = m.at<float>(6);
-	float r32 = m.at<float>(7);
-	float r33 = m.at<float>(8);
+std::array<float, 3> mRot2Quat(std::array<float, 3> m) {
+	float r11 = m[0];
+	float r12 = m[1];
+	float r13 = m[2];
+	float r21 = m[3];
+	float r22 = m[4];
+	float r23 = m[5];
+	float r31 = m[6];
+	float r32 = m[7];
+	float r33 = m[8];
 	float q0 = (r11 + r22 + r33 + 1.0f) / 4.0f;
 	float q1 = (r11 - r22 - r33 + 1.0f) / 4.0f;
 	float q2 = (-r11 + r22 - r33 + 1.0f) / 4.0f;
@@ -70,6 +72,5 @@ Mat mRot2Quat(const Mat& m) {
 	q2 /= r;
 	q3 /= r;
 
-	Mat res = (Mat_<float>(4, 1) << q0, q1, q2, q3);
-	return res;
+	return {q0, q1, q2, q3};
 }
