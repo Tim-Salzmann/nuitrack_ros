@@ -95,7 +95,7 @@ private:
         catch (LicenseNotAcquiredException& e)
         {
             std::cerr << "Test" << std::endl;
-            NuitrackCore(nh_);
+            NuitrackCore m(nh_);
             std::cerr << "LicenseNotAcquired exception (ExceptionType: " << e.type() << ")" << std::endl;
             //assert(false);
         }
