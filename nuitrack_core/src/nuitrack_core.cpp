@@ -357,7 +357,7 @@ private:
 
                 data.joint_pose.push_back(pose);
 
-                if (j.second = "joint_head")
+                if (j.second == "joint_head")
                 {
                     std::cerr << quat << std::endl;
                 }
