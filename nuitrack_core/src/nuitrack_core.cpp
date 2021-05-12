@@ -359,7 +359,11 @@ private:
 
                 if (j.second == "joint_head")
                 {
-                    std::cerr << quat << std::endl;
+                    for (int i = 0; i <= 4; i++)
+                    {
+                        std::cerr << quat[i];
+                    }
+                    std::cerr << std::endl;
                 }
             }
 
