@@ -78,10 +78,8 @@ public:
     {
         try
         {
-            std::cerr << "Offload" << std::endl;
             timer_.stop();
             Nuitrack::release();
-            std::cerr << "Offloaded" << std::endl;
         }
         catch (const Exception& e) {} // Do nothing
     }
@@ -358,6 +356,11 @@ private:
                 pose.orientation.z = quat[3];
 
                 data.joint_pose.push_back(pose);
+
+                if (j.second = "joint_head")
+                {
+                    std::cerr << quat << std::endl;
+                }
             }
 
             msg.skeletons.push_back(data);
