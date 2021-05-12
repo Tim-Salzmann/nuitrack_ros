@@ -356,15 +356,6 @@ private:
                 pose.orientation.z = quat[3];
 
                 data.joint_pose.push_back(pose);
-
-                if (j.second == "joint_head")
-                {
-                    for (int i = 0; i <= 4; i++)
-                    {
-                        std::cerr << quat[i];
-                    }
-                    std::cerr << std::endl;
-                }
             }
 
             msg.skeletons.push_back(data);
